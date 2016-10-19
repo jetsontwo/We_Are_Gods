@@ -79,3 +79,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+Assets/_Scenes/Roger.unity
+Assets/_Scenes/Roger.unity.meta
