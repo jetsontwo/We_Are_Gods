@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Player_Movement : MonoBehaviour {
 
-    public float speed;
+    public float speed, max_vel;
     private int horiz_move;
     private Rigidbody2D rb;
 
@@ -29,7 +29,14 @@ public class Player_Movement : MonoBehaviour {
             horiz_move = 0;
         }
 
-        rb.AddForce(new Vector2(horiz_move * speed, 0));
+        if(horiz_move != 0 && rb.velocity.magnitude < max_vel)
+        {
+            rb.velocity += new Vector2(horiz_move * speed * Time.deltaTime, 0);
+        }
+        else
+        {
+            rb.velocity -= new Vector2(rb.velocity.x, 0) * Time.deltaTime * 5;
+        }
         
     }
 }
