@@ -43,5 +43,6 @@ public class PlayerJump : MonoBehaviour, Mechanic_Interface
     public void Update_Parent()
     {
         rb = GetComponentInParent<Rigidbody2D>();
+        transform.localPosition = Vector3.zero;
     }
 }
