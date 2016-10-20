@@ -9,9 +9,9 @@ public class Test_Script : MonoBehaviour {
         put_script_into(to_put_into, child);
     }
 
-    void put_script_into(GameObject go, GameObject child_script)
+    void put_script_into(GameObject go, GameObject child_holding_script)
     {
-        child_script.transform.SetParent(go.transform, false);
-        child_script.GetComponent<Mechanic_Interface>().Update_Parent();
+        child_holding_script.transform.SetParent(go.transform, false);
+        child_holding_script.GetComponent<Mechanic_Interface>().Update_Parent();
     }
 }
