@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Player_Movement : MonoBehaviour {
+public class Player_Movement : MonoBehaviour, Mechanic_Interface {
 
     public float speed, max_vel;
     private int horiz_move;
@@ -9,8 +9,9 @@ public class Player_Movement : MonoBehaviour {
 
     void Start()
     {
-        rb = GetComponentInParent<Rigidbody2D>();
+        Update_Parent();
     }
+
 	
 	// Update is called once per frame
 	void Update () {
@@ -38,5 +39,10 @@ public class Player_Movement : MonoBehaviour {
             rb.velocity -= new Vector2(rb.velocity.x, 0) * Time.deltaTime * 5;
         }
         
+    }
+
+    public void Update_Parent()
+    {
+        rb = GetComponentInParent<Rigidbody2D>();
     }
 }
