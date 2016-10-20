@@ -51,4 +51,9 @@ public class ChildManager : MonoBehaviour
         }
         Destroy(tempRot);*/
     }
+
+    void OnMouseDown ()
+    {
+        Debug.Log("HI");
+    }
 }
