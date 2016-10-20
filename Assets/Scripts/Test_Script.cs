@@ -12,6 +12,6 @@ public class Test_Script : MonoBehaviour {
     void put_script_into(GameObject go, GameObject child_holding_script)
     {
         child_holding_script.transform.SetParent(go.transform, false);
-        child_holding_script.GetComponent<Mechanic_Interface>().Update_Parent();
+        child_holding_script.GetComponent<Mechanic_Interface>().AddGameComponent();
     }
 }

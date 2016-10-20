@@ -11,7 +11,7 @@ public class PlayerJump : MonoBehaviour, Mechanic_Interface
 
     void Start()
     {
-        Update_Parent();
+        AddGameComponent();
     }
 
     void Update()
@@ -40,9 +40,14 @@ public class PlayerJump : MonoBehaviour, Mechanic_Interface
         }
     }
 
-    public void Update_Parent()
+    public void AddGameComponent()
     {
         rb = GetComponentInParent<Rigidbody2D>();
         transform.localPosition = Vector3.zero;
+    }
+
+    public void RemoveGameComponent()
+    {
+
     }
 }

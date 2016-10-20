@@ -3,5 +3,6 @@ using System.Collections;
 
 public interface Mechanic_Interface
 {
-    void Update_Parent();
+    void AddGameComponent();
+    void RemoveGameComponent();
 }

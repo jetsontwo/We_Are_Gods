@@ -9,7 +9,7 @@ public class Player_Movement : MonoBehaviour, Mechanic_Interface {
 
     void Start()
     {
-        Update_Parent();
+        AddGameComponent();
     }
 
 	
@@ -30,9 +30,14 @@ public class Player_Movement : MonoBehaviour, Mechanic_Interface {
         }
     }
 
-    public void Update_Parent()
+    public void AddGameComponent()
     {
         rb = GetComponentInParent<Rigidbody2D>();
         transform.localPosition = Vector3.zero;
+    }
+
+    public void RemoveGameComponent ()
+    {
+
     }
 }
