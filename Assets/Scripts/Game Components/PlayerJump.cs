@@ -4,7 +4,6 @@ using System.Collections;
 public class PlayerJump : MonoBehaviour, Mechanic_Interface
 {
     public float jumpSpeed;
-    public float playerHeight;
     bool jumping = false;
 
     Rigidbody2D rb;
@@ -43,7 +42,9 @@ public class PlayerJump : MonoBehaviour, Mechanic_Interface
     public void AddGameComponent()
     {
         rb = GetComponentInParent<Rigidbody2D>();
-        transform.localPosition = Vector3.zero;
+
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
     }
 
     public void RemoveGameComponent()

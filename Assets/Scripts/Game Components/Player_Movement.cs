@@ -57,7 +57,9 @@ public class Player_Movement : MonoBehaviour, Mechanic_Interface
         //Finds the new Rigidbody2D to act upon and sets the position of the game component on top of the new Player or actable object
         rb = transform.parent.GetComponent<Rigidbody2D>();
         ar = transform.parent.GetComponent<Animator>();
-        transform.localPosition = Vector3.zero;
+
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
     }
 
     public void RemoveGameComponent()
