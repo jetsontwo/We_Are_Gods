@@ -25,7 +25,7 @@ GameObject:
   - 50: {fileID: 50000013121509236}
   m_Layer: 0
   m_Name: Jump
-  m_TagString: Untagged
+  m_TagString: Component
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,8 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c413219704b3b604e9158f6ed276fd6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpSpeed: 5
-  playerHeight: 0
+  jumpSpeed: 6.5
 --- !u!212 &212000013971805602
 SpriteRenderer:
   m_ObjectHideFlags: 1
