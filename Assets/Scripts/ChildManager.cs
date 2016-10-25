@@ -29,25 +29,30 @@ public class ChildManager : MonoBehaviour
         if (showChildren)
         {
             //METHOD 1 - TRIG (NOT VERY GOOD)
+            //Profiler.BeginSample("Trig method");
             float rot = (2 * Mathf.PI) / children.Length;
 
             for (int i = 0; i < children.Length; i++)
             {
-                children[i].SetActive(true);
+                children[i].GetComponent<SpriteRenderer>().enabled = true;
+                children[i].GetComponent<Collider2D>().enabled = true;
 
                 float totalRot = (rot * i) + (Mathf.PI / 2);
                 Vector3 trigRot = new Vector3(Mathf.Cos(totalRot), Mathf.Sin(totalRot), 0);
 
                 children[i].transform.localPosition = trigRot * radius;
             }
+            //Profiler.EndSample();
 
             //METHOD 2 - FAKE TRANSFORM (ABOUT THE SAME)
-            /*rotOffset = new Vector3(0, 0, 360 / children.Length);
+            /*Profiler.BeginSample("Fake transform method");
+            rotOffset = new Vector3(0, 0, 360 / children.Length);
             GameObject tempRot = new GameObject();  //Use this objects rotation for now because it seems the easiest
 
             for (int i = 0; i < children.Length; i++)
             {
-                children[i].SetActive(true);
+                children[i].GetComponent<SpriteRenderer>().enabled = true;
+                children[i].GetComponent<Collider2D>().enabled = true;
 
                 Vector3 totalRot = rotOffset * i;
 
@@ -57,13 +62,15 @@ public class ChildManager : MonoBehaviour
                 Ray childRay = new Ray(transform.position, tempRot.transform.up);   //If you want to improve this keep in mind that the ray's direction is normalized
                 children[i].transform.position = childRay.GetPoint(radius);
             }
-            Destroy(tempRot);*/
+            Destroy(tempRot);
+            Profiler.EndSample();*/
         }
         else
         {
             for (int i = 0; i < children.Length; i++)
             {
-                children[i].SetActive(false);
+                children[i].GetComponent<SpriteRenderer>().enabled = false;
+                children[i].GetComponent<Collider2D>().enabled = false;
             }
         }
     }
