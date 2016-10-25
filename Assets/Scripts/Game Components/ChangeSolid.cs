@@ -10,7 +10,7 @@ public class ChangeSolid : MonoBehaviour, Mechanic_Interface
 
     public void AddGameComponent()
     {
-        GetComponentInParent<Collider2D>().enabled = false;
+        transform.parent.GetComponent<Collider2D>().enabled = false;
 
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<Collider2D>().enabled = false;
@@ -18,6 +18,6 @@ public class ChangeSolid : MonoBehaviour, Mechanic_Interface
 
     public void RemoveGameComponent()
     {
-        GetComponentInParent<Collider2D>().enabled = true;
+        transform.parent.GetComponent<Collider2D>().enabled = true;
     }
 }

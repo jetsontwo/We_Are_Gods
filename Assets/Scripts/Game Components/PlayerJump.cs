@@ -41,7 +41,7 @@ public class PlayerJump : MonoBehaviour, Mechanic_Interface
 
     public void AddGameComponent()
     {
-        rb = GetComponentInParent<Rigidbody2D>();
+        rb = transform.parent.GetComponent<Rigidbody2D>();
 
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<Collider2D>().enabled = false;
