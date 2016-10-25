@@ -27,7 +27,7 @@ public class PlayerJump : MonoBehaviour, Mechanic_Interface
         if (jumping)
         {
             RaycastHit2D hit;
-            hit = Physics2D.Raycast(rb.transform.position, -rb.transform.up, playerHeight);
+            hit = Physics2D.Raycast(rb.transform.position, -rb.transform.up, (rb.GetComponent<Collider2D>().bounds.extents.y + 0.01f));
 
             if (hit)
             {
