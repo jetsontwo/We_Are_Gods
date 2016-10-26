@@ -59,6 +59,6 @@ public class AIMovement : MonoBehaviour,Mechanic_Interface
 
     public void RemoveGameComponent()
     {
-
+        rb.velocity = Vector2.zero;
     }
 }

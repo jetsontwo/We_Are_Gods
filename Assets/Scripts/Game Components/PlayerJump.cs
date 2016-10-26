@@ -50,6 +50,6 @@ public class PlayerJump : MonoBehaviour, Mechanic_Interface
 
     public void RemoveGameComponent()
     {
-
+        jumping = false;
     }
 }
