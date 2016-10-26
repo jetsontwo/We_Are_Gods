@@ -20,11 +20,14 @@ public class ChildManager : MonoBehaviour
         children = new GameObject[transform.childCount];
         for (int i = 0; i < transform.childCount; i++)
         {
-            children[i] = transform.GetChild(i).gameObject;
+            if (transform.GetChild(i).CompareTag("Component"))
+            {
+                children[i] = transform.GetChild(i).gameObject;
+            }
         }
     }
 
-    void ArrangeChildren ()
+    void ArrangeChildren()
     {
         if (showChildren)
         {
@@ -77,7 +80,10 @@ public class ChildManager : MonoBehaviour
 
     void OnMouseDown ()
     {
-        showChildren = !showChildren;
-        ArrangeChildren();
+        if (children.Length > 0)
+        {
+            showChildren = !showChildren;
+            ArrangeChildren();
+        }
     }
 }

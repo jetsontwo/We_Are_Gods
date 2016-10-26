@@ -10,6 +10,9 @@ public class PlayerJump : MonoBehaviour, Mechanic_Interface
 
     void Start()
     {
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+
         AddGameComponent();
     }
 
@@ -26,10 +29,12 @@ public class PlayerJump : MonoBehaviour, Mechanic_Interface
         if (jumping)
         {
             RaycastHit2D hit;
-            hit = Physics2D.Raycast(rb.transform.position, -rb.transform.up, (rb.GetComponent<Collider2D>().bounds.extents.y * 1.1f), LayerMask.GetMask("Ground"));
+            hit = Physics2D.Raycast(rb.transform.position, -rb.transform.up,
+                ((rb.GetComponent<Collider2D>().bounds.extents.y - (rb.GetComponent<Collider2D>().offset.y * rb.transform.localScale.y)) * 1.1f));
+
             if (hit)
             {
-                if (hit.collider.CompareTag("Ground"))
+                if (hit.collider.CompareTag("Ground"))  //This nested 'if', rather than an &&, avoids error messages if hit is null
                 {
                     rb.AddRelativeForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
                     jumping = false;
@@ -41,9 +46,6 @@ public class PlayerJump : MonoBehaviour, Mechanic_Interface
     public void AddGameComponent()
     {
         rb = transform.parent.GetComponent<Rigidbody2D>();
-
-        GetComponent<SpriteRenderer>().enabled = false;
-        GetComponent<Collider2D>().enabled = false;
     }
 
     public void RemoveGameComponent()

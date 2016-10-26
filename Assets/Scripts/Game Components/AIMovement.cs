@@ -44,6 +44,10 @@ public class AIMovement : MonoBehaviour,Mechanic_Interface
                 rb.AddForce(new Vector2(speed, 0), ForceMode2D.Impulse);
             }
         }
+        else
+        {
+            Debug.LogError("Invlaid rotation of " + rb.transform.eulerAngles.y + " for AI Movement on " + rb.name + "!");
+        }
         //Velocity checks are different otherwise weird behavior when switching directions at max velocity
         //Also, angle is set everytime because transform.Rotate can get weird numbers, like 1.035947e^-5, as angels sometimes
     }

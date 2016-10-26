@@ -9,13 +9,14 @@ public class Player_Movement : MonoBehaviour, Mechanic_Interface
     private Rigidbody2D rb;
     private Animator ar;
 
-    void Start()
+    void Awake()
     {
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+
         AddGameComponent();
     }
 
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetButton("Horizontal"))
@@ -33,11 +34,16 @@ public class Player_Movement : MonoBehaviour, Mechanic_Interface
                 ar.SetBool("walk_right", false);
                 ar.SetBool("Idle", false);
             }
-            if (rb.velocity.magnitude < max_vel)
+
+            if (rb.velocity.x < max_vel && horiz_move > 0)  //If moving right and not at max (positive/right) velocity
             {
                 rb.velocity += new Vector2(horiz_move * speed * Time.deltaTime, 0);
             }
-
+            else if (rb.velocity.x > -max_vel && horiz_move < 0)    //If moving left and not at max (negative/left) velocity
+            {
+                rb.velocity += new Vector2(horiz_move * speed * Time.deltaTime, 0);
+            }
+            //Otherwise weird behavior when switching directions at max velocity
         }
         else
         {
@@ -46,7 +52,7 @@ public class Player_Movement : MonoBehaviour, Mechanic_Interface
             ar.SetBool("walk_right", false);
         }
 
-        if(rb.velocity.magnitude <= 0.2f)
+        if(Mathf.Abs(rb.velocity.x) <= 0.2f)
         {
             ar.SetBool("Idle", true);
         }
@@ -57,9 +63,6 @@ public class Player_Movement : MonoBehaviour, Mechanic_Interface
         //Finds the new Rigidbody2D to act upon and sets the position of the game component on top of the new Player or actable object
         rb = transform.parent.GetComponent<Rigidbody2D>();
         ar = transform.parent.GetComponent<Animator>();
-
-        GetComponent<SpriteRenderer>().enabled = false;
-        GetComponent<Collider2D>().enabled = false;
     }
 
     public void RemoveGameComponent()
