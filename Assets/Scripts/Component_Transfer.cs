@@ -46,10 +46,13 @@ public class Component_Transfer : MonoBehaviour {
                 if (!cm.showChildren)
                     cm.object_clicked();
                 else if (game_object_cm)
-                    cm.object_clicked();
+                {
+                    game_object_cm.object_clicked();
+                }
                 object_clicked_storage = object_clicked.gameObject;
                 game_object_cm = object_clicked_storage.GetComponent<ChildManager>();
-                game_object_cm.object_clicked();
+                if(!game_object_cm.showChildren)
+                    game_object_cm.object_clicked();
                 
                 
             }
