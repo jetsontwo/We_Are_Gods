@@ -24,7 +24,7 @@ GameObject:
   - 61: {fileID: 61000011582199148}
   - 50: {fileID: 50000013627020892}
   m_Layer: 0
-  m_Name: Not Solid
+  m_Name: Change Solid
   m_TagString: Component
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

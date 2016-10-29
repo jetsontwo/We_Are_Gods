@@ -7,6 +7,7 @@ public class ChildManager : MonoBehaviour
 
     public float radius;
     private Vector3 rotOffset;
+
     public bool showChildren;
 
     void Awake()
@@ -41,9 +42,11 @@ public class ChildManager : MonoBehaviour
                 children[i].GetComponent<Collider2D>().enabled = true;
 
                 float totalRot = (rot * i) + (Mathf.PI / 2);
-                Vector3 trigRot = new Vector3(Mathf.Cos(totalRot), Mathf.Sin(totalRot), 0);
+                Vector3 trigRot = new Vector3(Mathf.Cos(totalRot) / transform.localScale.x, Mathf.Sin(totalRot) / transform.localScale.y, 0);
 
                 children[i].transform.localPosition = trigRot * radius;
+                children[i].transform.localScale = new Vector3(childSize / transform.localScale.x, childSize / transform.localScale.y,
+                    childSize / transform.localScale.z);
             }
             //Profiler.EndSample();
 
