@@ -23,7 +23,7 @@ GameObject:
   - 212: {fileID: 212000010652547698}
   - 61: {fileID: 61000014002342850}
   - 50: {fileID: 50000013344498244}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: AI Movement
   m_TagString: Component
   m_Icon: {fileID: 0}

@@ -23,7 +23,7 @@ GameObject:
   - 212: {fileID: 212000013971805602}
   - 61: {fileID: 61000011960706734}
   - 50: {fileID: 50000013121509236}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Jump
   m_TagString: Component
   m_Icon: {fileID: 0}

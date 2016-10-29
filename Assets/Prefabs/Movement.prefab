@@ -23,7 +23,7 @@ GameObject:
   - 212: {fileID: 212000013026158030}
   - 61: {fileID: 61000011887417674}
   - 50: {fileID: 50000011462101112}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Movement
   m_TagString: Component
   m_Icon: {fileID: 0}
