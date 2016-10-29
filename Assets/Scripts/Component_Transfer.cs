@@ -74,6 +74,9 @@ public class Component_Transfer : MonoBehaviour {
                     cm.no_show_children();
                 else
                     cm.show_children();
+
+                object_clicked_storage = null;
+                game_object_cm = null;
             }
         }
 	}
