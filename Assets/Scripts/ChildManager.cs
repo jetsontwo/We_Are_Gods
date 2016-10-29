@@ -82,11 +82,20 @@ public class ChildManager : MonoBehaviour
         }
     }
 
-    public void object_clicked ()
+    public void show_children ()
     {
         if (children.Length > 0)
         {
-            showChildren = !showChildren;
+            showChildren = true;
+            ArrangeChildren();
+        }
+    }
+
+    public void no_show_children()
+    {
+        if (children.Length > 0)
+        {
+            showChildren = false;
             ArrangeChildren();
         }
     }

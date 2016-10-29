@@ -25,12 +25,12 @@ public class Component_Transfer : MonoBehaviour {
                 if (object_clicked_storage != null)
                 {
                     if (game_object_cm.showChildren)
-                        game_object_cm.object_clicked();
+                        game_object_cm.no_show_children();
                     object_clicked_storage = null;
                     game_object_cm = null;
                 }
                 if (cm.showChildren)
-                    cm.object_clicked();
+                    cm.no_show_children();
             }
             else if (object_clicked.CompareTag("Component"))
             {
@@ -43,25 +43,37 @@ public class Component_Transfer : MonoBehaviour {
             }
             else if (object_clicked.CompareTag("Transfer"))
             {
-                if (!cm.showChildren)
-                    cm.object_clicked();
-                else if (game_object_cm)
+
+
+                if (object_clicked_storage == object_clicked.gameObject)
                 {
-                    game_object_cm.object_clicked();
+                    game_object_cm.no_show_children();
+                    cm.no_show_children();
                 }
-                object_clicked_storage = object_clicked.gameObject;
-                game_object_cm = object_clicked_storage.GetComponent<ChildManager>();
-                if(!game_object_cm.showChildren)
-                    game_object_cm.object_clicked();
-                
-                
+                else
+                {
+                    if (game_object_cm)
+                        game_object_cm.no_show_children();
+                    object_clicked_storage = object_clicked.gameObject;
+                    game_object_cm = object_clicked_storage.GetComponent<ChildManager>();
+                    if (!game_object_cm.showChildren)
+                        game_object_cm.show_children();
+                    if (!cm.showChildren)
+                        cm.show_children();
+                }
+
+
+
             }
             else if (object_clicked.CompareTag("Player"))
             {
                 if (game_object_cm)
                     if (game_object_cm.showChildren)
-                        game_object_cm.object_clicked();
-                cm.object_clicked();
+                        game_object_cm.no_show_children();
+                if (cm.showChildren)
+                    cm.no_show_children();
+                else
+                    cm.show_children();
             }
         }
 	}
