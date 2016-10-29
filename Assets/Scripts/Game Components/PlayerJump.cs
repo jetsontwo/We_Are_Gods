@@ -5,6 +5,7 @@ public class PlayerJump : MonoBehaviour, Mechanic_Interface
 {
     public float jumpSpeed;
     bool jumping = false;
+    private Animator am;
 
     Rigidbody2D rb;
 
@@ -22,6 +23,9 @@ public class PlayerJump : MonoBehaviour, Mechanic_Interface
         {
             jumping = true;
         }
+        if(am)
+            am.SetBool("Jump", jumping);
+
     }
 
     void FixedUpdate()
@@ -46,6 +50,8 @@ public class PlayerJump : MonoBehaviour, Mechanic_Interface
     public void AddGameComponent()
     {
         rb = transform.parent.GetComponent<Rigidbody2D>();
+        if(transform.parent.CompareTag("Player"))
+            am = transform.parent.GetComponent<Animator>();
     }
 
     public void RemoveGameComponent()
