@@ -38,7 +38,7 @@ public class PlayerJump : MonoBehaviour, Mechanic_Interface
 
             if (hit)
             {
-                if (hit.collider.CompareTag("Ground"))  //This nested 'if', rather than an &&, avoids error messages if hit is null
+                if (!hit.collider.isTrigger)  //This nested 'if', rather than an &&, avoids error messages if hit is null
                 {
                     rb.AddRelativeForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
                     jumping = false;
