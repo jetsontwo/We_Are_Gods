@@ -6,6 +6,7 @@ public class PlayerJump : MonoBehaviour, Mechanic_Interface
     public float jumpSpeed;
     bool jumping = false;
     private Animator am;
+    public bool always_jump;
 
     Rigidbody2D rb;
 
@@ -19,7 +20,7 @@ public class PlayerJump : MonoBehaviour, Mechanic_Interface
 
     void Update()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") || always_jump)
         {
             jumping = true;
         }
@@ -40,10 +41,13 @@ public class PlayerJump : MonoBehaviour, Mechanic_Interface
             {
                 if (!hit.collider.isTrigger)  //This nested 'if', rather than an &&, avoids error messages if hit is null
                 {
-                    rb.AddRelativeForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
-                    jumping = false;
+                    if(rb.velocity.y == 0)
+                    {
+                        rb.AddRelativeForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
+                    }
                 }
             }
+            jumping = false;
         }
     }
 
@@ -57,5 +61,6 @@ public class PlayerJump : MonoBehaviour, Mechanic_Interface
     public void RemoveGameComponent()
     {
         jumping = false;
+        always_jump = false;
     }
 }
