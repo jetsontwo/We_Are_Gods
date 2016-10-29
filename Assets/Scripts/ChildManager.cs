@@ -7,7 +7,7 @@ public class ChildManager : MonoBehaviour
 
     public float radius;
     private Vector3 rotOffset;
-    bool showChildren;
+    public bool showChildren;
 
     void Awake()
     {
@@ -27,7 +27,7 @@ public class ChildManager : MonoBehaviour
         }
     }
 
-    void ArrangeChildren()
+    public void ArrangeChildren()
     {
         if (showChildren)
         {
@@ -78,7 +78,7 @@ public class ChildManager : MonoBehaviour
         }
     }
 
-    void OnMouseDown ()
+    public void object_clicked ()
     {
         if (children.Length > 0)
         {

@@ -253,7 +253,7 @@ GameObject:
   - 61: {fileID: 337915769}
   m_Layer: 0
   m_Name: Ball2
-  m_TagString: Untagged
+  m_TagString: Transfer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -334,6 +334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 0.4
+  showChildren: 0
 --- !u!61 &337915769
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1055,6 +1056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 0.35
+  showChildren: 0
 --- !u!61 &1200528436
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1248,7 +1250,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000014221436618, guid: 48176f51a3277284dacc1b69194d2015, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.27
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000014221436618, guid: 48176f51a3277284dacc1b69194d2015, type: 2}
       propertyPath: m_LocalPosition.y

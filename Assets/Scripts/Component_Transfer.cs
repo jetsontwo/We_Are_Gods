@@ -2,19 +2,64 @@
 using System.Collections;
 
 public class Component_Transfer : MonoBehaviour {
-	
+
+    private GameObject object_clicked_storage;
+    private ChildManager cm, game_object_cm;
 	// Update is called once per frame
+
+    void Start()
+    {
+        cm = GetComponent<ChildManager>();
+    }
 	void Update () {
         if (Input.GetMouseButtonDown(0))
         {
             //Scans for a collider when the player clicks at the current mouse position
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Collider2D componentToTransfer = Physics2D.OverlapPoint(new Vector2(mousePosition.x, mousePosition.y));
+            Collider2D object_clicked = Physics2D.OverlapPoint(new Vector2(mousePosition.x, mousePosition.y));
 
-            if(componentToTransfer != null && componentToTransfer.CompareTag("Component"))
+
+            //Sees if the object caught by the raycast is nothing (option 1) a component to transfer (option 2) or a player or transferable Game Object (option 3)
+            if (object_clicked == null)
             {
-                Transfer_Component(gameObject, componentToTransfer.gameObject);
-            }            
+                if (object_clicked_storage != null)
+                {
+                    if (game_object_cm.showChildren)
+                        game_object_cm.object_clicked();
+                    object_clicked_storage = null;
+                    game_object_cm = null;
+                }
+                if (cm.showChildren)
+                    cm.object_clicked();
+            }
+            else if (object_clicked.CompareTag("Component"))
+            {
+                if (object_clicked.transform.parent != gameObject.transform)
+                    Transfer_Component(gameObject, object_clicked.gameObject);
+                else
+                {
+                    Transfer_Component(object_clicked_storage, object_clicked.gameObject);
+                }
+            }
+            else if (object_clicked.CompareTag("Transfer"))
+            {
+                if (!cm.showChildren)
+                    cm.object_clicked();
+                else if (game_object_cm)
+                    cm.object_clicked();
+                object_clicked_storage = object_clicked.gameObject;
+                game_object_cm = object_clicked_storage.GetComponent<ChildManager>();
+                game_object_cm.object_clicked();
+                
+                
+            }
+            else if (object_clicked.CompareTag("Player"))
+            {
+                if (game_object_cm)
+                    if (game_object_cm.showChildren)
+                        game_object_cm.object_clicked();
+                cm.object_clicked();
+            }
         }
 	}
 
@@ -33,5 +78,7 @@ public class Component_Transfer : MonoBehaviour {
         //Runs the functions to reset the game component as its moved between GameObjects
         componentToTransfer.GetComponent<Mechanic_Interface>().RemoveGameComponent();
         componentToTransfer.GetComponent<Mechanic_Interface>().AddGameComponent();
+        objectToTransferTo.GetComponent<ChildManager>().UpdateChildren();
+        objectToTransferTo.GetComponent<ChildManager>().ArrangeChildren();
     }
 }
