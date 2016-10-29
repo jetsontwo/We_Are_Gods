@@ -65,6 +65,8 @@ public class Component_Transfer : MonoBehaviour {
 
     void Transfer_Component(GameObject objectToTransferTo, GameObject componentToTransfer)
     {
+        componentToTransfer.GetComponent<Mechanic_Interface>().RemoveGameComponent();
+
         Transform old_parent = componentToTransfer.transform.parent;
         //Sets the parent of the game component to the one specified
         componentToTransfer.transform.SetParent(objectToTransferTo.transform, false);
@@ -76,7 +78,6 @@ public class Component_Transfer : MonoBehaviour {
         componentToTransfer.GetComponent<BoxCollider2D>().enabled = false;
 
         //Runs the functions to reset the game component as its moved between GameObjects
-        componentToTransfer.GetComponent<Mechanic_Interface>().RemoveGameComponent();
         componentToTransfer.GetComponent<Mechanic_Interface>().AddGameComponent();
         objectToTransferTo.GetComponent<ChildManager>().UpdateChildren();
         objectToTransferTo.GetComponent<ChildManager>().ArrangeChildren();
