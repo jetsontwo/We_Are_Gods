@@ -9,6 +9,7 @@ public class ChildManager : MonoBehaviour
     private Vector3 rotOffset;
 
     public bool showChildren;
+    int childSize = 3;
 
     void Awake()
     {
