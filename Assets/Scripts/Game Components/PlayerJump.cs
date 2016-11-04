@@ -7,6 +7,7 @@ public class PlayerJump : MonoBehaviour, Mechanic_Interface
     bool jumping = false;
     private Animator am;
     public bool always_jump;
+    public LayerMask includedLayers;
 
     Rigidbody2D rb;
 
@@ -35,7 +36,8 @@ public class PlayerJump : MonoBehaviour, Mechanic_Interface
         {
             RaycastHit2D hit;
             hit = Physics2D.Raycast(rb.transform.position, -rb.transform.up,
-                ((rb.GetComponent<Collider2D>().bounds.extents.y - (rb.GetComponent<Collider2D>().offset.y * rb.transform.localScale.y)) * 1.1f));
+                ((rb.GetComponent<Collider2D>().bounds.extents.y - (rb.GetComponent<Collider2D>().offset.y * rb.transform.localScale.y)) * 1.1f),
+                includedLayers);
 
             if (hit)
             {

@@ -87,6 +87,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpSpeed: 6.5
   always_jump: 1
+  includedLayers:
+    serializedVersion: 2
+    m_Bits: 4294967039
 --- !u!212 &212000013971805602
 SpriteRenderer:
   m_ObjectHideFlags: 1
