@@ -18,8 +18,8 @@ public class Component_Transfer : MonoBehaviour {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Collider2D object_clicked = Physics2D.OverlapPoint(new Vector2(mousePosition.x, mousePosition.y));
 
-
-            //Sees if the object caught by the raycast is nothing (option 1) a component to transfer (option 2) or a player or transferable Game Object (option 3)
+            
+            //Sees if the object caught by the raycast is nothing (option 1) a component to transfer (option 2)or transferable Game Object (option 3) or a player (option 4)
             if (object_clicked == null)
             {
                 if (object_clicked_storage != null)
@@ -34,6 +34,7 @@ public class Component_Transfer : MonoBehaviour {
             }
             else if (object_clicked.CompareTag("Component"))
             {
+                print("hello");
                 if (object_clicked.transform.parent != gameObject.transform)
                     Transfer_Component(gameObject, object_clicked.gameObject);
                 else
@@ -44,11 +45,11 @@ public class Component_Transfer : MonoBehaviour {
             else if (object_clicked.CompareTag("Transfer"))
             {
 
-
                 if (object_clicked_storage == object_clicked.gameObject)
                 {
                     game_object_cm.no_show_children();
                     cm.no_show_children();
+                    object_clicked_storage = null;
                 }
                 else
                 {
@@ -61,9 +62,6 @@ public class Component_Transfer : MonoBehaviour {
                     if (!cm.showChildren)
                         cm.show_children();
                 }
-
-
-
             }
             else if (object_clicked.CompareTag("Player"))
             {
