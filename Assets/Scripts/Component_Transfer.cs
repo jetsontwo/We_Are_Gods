@@ -34,7 +34,6 @@ public class Component_Transfer : MonoBehaviour {
             }
             else if (object_clicked.CompareTag("Component"))
             {
-                print("hello");
                 if (object_clicked.transform.parent != gameObject.transform)
                     Transfer_Component(gameObject, object_clicked.gameObject);
                 else
