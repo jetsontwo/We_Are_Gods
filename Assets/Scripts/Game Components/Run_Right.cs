@@ -63,7 +63,10 @@ public class Run_Right : MonoBehaviour, Mechanic_Interface
     {
         //Resets the velocity of the object to zero when the game component is removed
         if(!player)
+        {
             rb.velocity = Vector2.zero;
+            ar.SetBool("walking", false);
+        }
         player = false;
     }
 }
