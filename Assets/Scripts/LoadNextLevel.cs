@@ -3,8 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class LoadNextLevel : MonoBehaviour
 {
-    void LoadLevel(int levelNum)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        SceneManager.LoadScene("Level " + levelNum);
+        if (col.CompareTag("Player"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }
