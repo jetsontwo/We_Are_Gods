@@ -23,7 +23,7 @@ GameObject:
   - 212: {fileID: 212000013954040854}
   - 61: {fileID: 61000011582199148}
   - 50: {fileID: 50000013627020892}
-  m_Layer: 4
+  m_Layer: 8
   m_Name: Change Solid
   m_TagString: Component
   m_Icon: {fileID: 0}
