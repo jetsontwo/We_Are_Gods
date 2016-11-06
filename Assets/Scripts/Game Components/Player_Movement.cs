@@ -3,16 +3,19 @@ using System.Collections;
 
 public class Player_Movement : MonoBehaviour, Mechanic_Interface
 {
-
     public float speed, max_vel;
+
     private float horiz_move;
     private Rigidbody2D rb;
     private Animator ar;
+    private CameraFollow camFollow;
 
     void Awake()
     {
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<Collider2D>().enabled = false;
+
+        camFollow = Camera.main.GetComponent<CameraFollow>();
 
         AddGameComponent();
     }
@@ -63,6 +66,8 @@ public class Player_Movement : MonoBehaviour, Mechanic_Interface
         //Finds the new Rigidbody2D to act upon and sets the position of the game component on top of the new Player or actable object
         rb = transform.parent.GetComponent<Rigidbody2D>();
         ar = transform.parent.GetComponent<Animator>();
+
+        camFollow.followTrans = transform.parent;
     }
 
     public void RemoveGameComponent()
