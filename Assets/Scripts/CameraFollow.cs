@@ -2,6 +2,7 @@
 
 public class CameraFollow : MonoBehaviour
 {
+    public float camSize;
     public Vector2 minPoint;
     public Vector2 maxPoint;
 
@@ -10,7 +11,7 @@ public class CameraFollow : MonoBehaviour
     
     void Start()
     {
-        GetComponent<Camera>().orthographicSize = 2;
+        GetComponent<Camera>().orthographicSize = camSize;
     }
 
     void Update()
