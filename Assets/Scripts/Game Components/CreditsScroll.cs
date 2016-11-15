@@ -4,6 +4,7 @@ using System.Collections;
 public class CreditsScroll : MonoBehaviour
 {
     public float scrollSpeed;
+    public Vector2 minMaxY; //X is min, Y is max
     public int standTime;
     public float shakeIntensity;
     
@@ -23,8 +24,14 @@ public class CreditsScroll : MonoBehaviour
     {
         //Maybe add?
         //lerpSpeed = 1 / (10 * scrollSpeed); //Make platform speed easier to manage
-
-        transform.Translate(0, scrollSpeed, 0);
+        if (transform.position.y < minMaxY.y)
+        {
+            transform.Translate(0, scrollSpeed, 0);
+        }
+        else
+        {
+            transform.position = new Vector3(transform.position.x, minMaxY.x, transform.position.z);
+        }
     }
 
     void FixedUpdate()
@@ -71,8 +78,8 @@ public class CreditsScroll : MonoBehaviour
     {
         transform.GetComponent<Collider2D>().enabled = false;
 
-        SpriteRenderer parentSprite = transform.GetComponent<SpriteRenderer>();
-        parentSprite.color = new Color(parentSprite.color.r, parentSprite.color.g, parentSprite.color.b, parentSprite.color.a / 2);
+        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, sprite.color.a / 2);
 
         standingOn = false;
         Vector3 shakeRightSide = new Vector3(maxX, transform.position.y, transform.position.z);
