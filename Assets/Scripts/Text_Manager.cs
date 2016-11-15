@@ -75,8 +75,8 @@ public class Text_Manager : MonoBehaviour {
             blip.pitch = Random.Range(0.6f, 0.65f);
             yield return new WaitForSeconds(text_speed);
         }
-        dialogue_box.text = "";
         yield return new WaitForSeconds(time_between_text);
+        dialogue_box.text = "";
         yield return new WaitForSeconds(5);
         str = "";
         for (int j = 0; j < text[1].Length; j++)
