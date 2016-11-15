@@ -8,6 +8,8 @@ public class Component_Transfer : MonoBehaviour {
     private Transform before, after;
     private Rigidbody2D mechanic_rb;
     private bool moving_component = false;
+    private ParticleSystem ps;
+    public Text_Manager tm;
 	// Update is called once per frame
 
     void Start()
@@ -15,6 +17,7 @@ public class Component_Transfer : MonoBehaviour {
         cm = GetComponent<ChildManager>();
     }
 	void Update () {
+        tm.transferred_component = null;
         if (Input.GetMouseButtonDown(0) && !moving_component)
         {
             //Scans for a collider when the player clicks at the current mouse position
@@ -27,6 +30,8 @@ public class Component_Transfer : MonoBehaviour {
             {
                 if (object_clicked_storage != null)
                 {
+                    Change_Emission(10);
+                    ps = null;
                     if (game_object_cm.showChildren)
                         game_object_cm.no_show_children();
                     object_clicked_storage = null;
@@ -48,6 +53,8 @@ public class Component_Transfer : MonoBehaviour {
                     {
                         if (object_clicked.name.Equals(cs.allowed_mechanics[i]))
                         {
+                            tm.transferred_component = object_clicked.gameObject;
+
                             Transfer_Component(object_clicked_storage, object_clicked.gameObject);
                             //
                             //   SEND A MESSAGE HERE SAYING THEY CANNOT TRANSFER COMPONENT
@@ -64,6 +71,10 @@ public class Component_Transfer : MonoBehaviour {
                     game_object_cm.no_show_children();
                     cm.no_show_children();
                     object_clicked_storage = null;
+
+                    Change_Emission(10);
+                    ps = null;
+
                 }
                 else
                 {
@@ -71,6 +82,8 @@ public class Component_Transfer : MonoBehaviour {
                         game_object_cm.no_show_children();
                     object_clicked_storage = object_clicked.gameObject;
                     game_object_cm = object_clicked_storage.GetComponent<ChildManager>();
+                    ps = object_clicked.GetComponentInChildren<ParticleSystem>();
+                    Change_Emission(250);
                     if (!game_object_cm.showChildren)
                         game_object_cm.show_children();
                     if (!cm.showChildren)
@@ -107,7 +120,10 @@ public class Component_Transfer : MonoBehaviour {
                 Finish_Transfer();
             }
         }
+        tm.cur_touched_object = object_clicked_storage;
     }
+
+
 
     void Transfer_Component(GameObject objectToTransferTo, GameObject componentToTransfer)
     {
@@ -146,5 +162,15 @@ public class Component_Transfer : MonoBehaviour {
         component_transfer.GetComponent<Mechanic_Interface>().AddGameComponent();
         transfer_location.GetComponent<ChildManager>().UpdateChildren();
         transfer_location.GetComponent<ChildManager>().ArrangeChildren();
+    }
+
+    void Change_Emission(float value)
+    {
+        if(ps)
+        {
+            var em = ps.emission;
+            var rate = new ParticleSystem.MinMaxCurve(value);
+            em.rate = rate;
+        }
     }
 }

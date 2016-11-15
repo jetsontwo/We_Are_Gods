@@ -456,7 +456,9 @@ MonoBehaviour:
   time_between_text: 3
   beginning_wait: 5
   text_background: {fileID: 770914830}
+  exit_level: {fileID: 1000014098788058, guid: 86b7eee52b77593418c59031b7d8cf15, type: 2}
   blip: {fileID: 601741966}
+  command: first_level
 --- !u!114 &1057530677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -663,6 +665,9 @@ GameObject:
   - 212: {fileID: 2034745822}
   - 95: {fileID: 2034745821}
   - 114: {fileID: 2034745820}
+  - 114: {fileID: 2034745824}
+  - 50: {fileID: 2034745826}
+  - 61: {fileID: 2034745825}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -692,7 +697,7 @@ Animator:
   m_GameObject: {fileID: 2034745819}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 05559d9e233bcf74ab86de9bc45d51db, type: 2}
+  m_Controller: {fileID: 9100000, guid: 892e0df7531fb1a49a8b6f7e55f3979f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -746,3 +751,46 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!114 &2034745824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2034745819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 461357a456bb9294c9785f8c7e50e700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actuallyExit: 0
+--- !u!61 &2034745825
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2034745819}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5}
+--- !u!50 &2034745826
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2034745819}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
