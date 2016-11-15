@@ -19,12 +19,22 @@ public class ChildManager : MonoBehaviour
     public void UpdateChildren()
     {
         //Get all children
-        children = new GameObject[transform.childCount];
+        int child_count = 0;
         for (int i = 0; i < transform.childCount; i++)
         {
             if (transform.GetChild(i).CompareTag("Component"))
             {
-                children[i] = transform.GetChild(i).gameObject;
+                child_count++;
+            }
+        }
+        children = new GameObject[child_count];
+        int count = 0;
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            if(transform.GetChild(i).CompareTag("Component"))
+            {
+                children[count] = transform.GetChild(i).gameObject;
+                count++;
             }
         }
     }

@@ -3,8 +3,11 @@ using System.Collections;
 
 public class Component_Transfer : MonoBehaviour {
 
-    private GameObject object_clicked_storage;
+    private GameObject object_clicked_storage, component_transfer, transfer_location;
     private ChildManager cm, game_object_cm;
+    private Transform before, after;
+    private Rigidbody2D mechanic_rb;
+    private bool moving_component = false;
 	// Update is called once per frame
 
     void Start()
@@ -12,13 +15,13 @@ public class Component_Transfer : MonoBehaviour {
         cm = GetComponent<ChildManager>();
     }
 	void Update () {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !moving_component)
         {
             //Scans for a collider when the player clicks at the current mouse position
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Collider2D object_clicked = Physics2D.OverlapPoint(new Vector2(mousePosition.x, mousePosition.y));
 
-            
+
             //Sees if the object caught by the raycast is nothing (option 1) a component to transfer (option 2)or transferable Game Object (option 3) or a player (option 4)
             if (object_clicked == null)
             {
@@ -76,25 +79,58 @@ public class Component_Transfer : MonoBehaviour {
                 game_object_cm = null;
             }
         }
-	}
+        else if (moving_component)
+        {
+            float difx = before.position.x - after.position.x;
+            float dify = before.position.y - after.position.y;
+
+            if(Mathf.Abs(difx) >= 0.1 || Mathf.Abs(dify) >= 0.1)
+            {
+                mechanic_rb.velocity = new Vector2(difx / 5, dify / 5);
+            }
+            else
+            {
+                mechanic_rb.velocity = Vector2.zero;
+                moving_component = false;
+                Finish_Transfer();
+            }
+        }
+    }
 
     void Transfer_Component(GameObject objectToTransferTo, GameObject componentToTransfer)
     {
+        component_transfer = componentToTransfer;
+        transfer_location = objectToTransferTo;
         componentToTransfer.GetComponent<Mechanic_Interface>().RemoveGameComponent();
 
         Transform old_parent = componentToTransfer.transform.parent;
         //Sets the parent of the game component to the one specified
-        componentToTransfer.transform.SetParent(objectToTransferTo.transform, false);
+        componentToTransfer.transform.SetParent(objectToTransferTo.transform);
+        old_parent.GetComponent<ChildManager>().UpdateChildren();
+        //Do movement thing here
+        Move_Component(old_parent, transform, componentToTransfer.GetComponent<Rigidbody2D>());
 
         //Updates the children of the object that had the component removed and that of the new parent
-        old_parent.GetComponent<ChildManager>().UpdateChildren();
-        componentToTransfer.transform.parent.GetComponent<ChildManager>().UpdateChildren();
-        componentToTransfer.GetComponent<SpriteRenderer>().enabled = false;
-        componentToTransfer.GetComponent<BoxCollider2D>().enabled = false;
+
+    }
+
+    void Move_Component(Transform old_parent, Transform new_parent, Rigidbody2D object_to_move_rb)
+    {
+        before = old_parent;
+        after = new_parent;
+        mechanic_rb = object_to_move_rb;
+        moving_component = true;
+    }
+
+    void Finish_Transfer()
+    {
+        component_transfer.transform.parent.GetComponent<ChildManager>().UpdateChildren();
+        component_transfer.GetComponent<SpriteRenderer>().enabled = false;
+        component_transfer.GetComponent<BoxCollider2D>().enabled = false;
 
         //Runs the functions to reset the game component as its moved between GameObjects
-        componentToTransfer.GetComponent<Mechanic_Interface>().AddGameComponent();
-        objectToTransferTo.GetComponent<ChildManager>().UpdateChildren();
-        objectToTransferTo.GetComponent<ChildManager>().ArrangeChildren();
+        component_transfer.GetComponent<Mechanic_Interface>().AddGameComponent();
+        transfer_location.GetComponent<ChildManager>().UpdateChildren();
+        transfer_location.GetComponent<ChildManager>().ArrangeChildren();
     }
 }
