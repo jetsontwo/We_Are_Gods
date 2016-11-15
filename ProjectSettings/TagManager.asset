@@ -8,6 +8,7 @@ TagManager:
   - Component
   - Transfer
   - Exit
+  - Death
   layers:
   - Default
   - TransparentFX

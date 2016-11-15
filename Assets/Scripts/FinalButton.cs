@@ -1,30 +1,24 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class FinalButton : MonoBehaviour
 {
+    [HideInInspector]
     public bool quitNow;
+    public GameObject confirmEnd;
 
-    void OnMouseDown()
+    void OnTriggerEnter2D(Collider2D col)
     {
-        GetComponent<Animator>().SetTrigger("Press");
+        if (col.CompareTag("Player"))
+        {
+            GetComponent<Animator>().SetTrigger("Press");
+        }
     }
 
     void Update()
     {
         if (quitNow)
         {
-            EndGame();
+            confirmEnd.SetActive(true);
         }
-    }
-
-    void EndGame()
-    {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-        Debug.Log("You ended the game!");
-#else
-        Application.Quit();
-#endif
     }
 }

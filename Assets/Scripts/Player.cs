@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    [HideInInspector]
     public bool actuallyExit;
 
     void Update()
@@ -13,6 +12,11 @@ public class Player : MonoBehaviour
             //Debug.Log("Loading next level.");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
+
+        if (Input.GetButtonDown("Reset"))
+        {
+            ResetLevel();
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -21,5 +25,15 @@ public class Player : MonoBehaviour
         {
             GetComponent<Animator>().SetTrigger("Exit Level");
         }
+
+        if (col.CompareTag("Death"))
+        {
+            ResetLevel();
+        }
+    }
+
+    void ResetLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
