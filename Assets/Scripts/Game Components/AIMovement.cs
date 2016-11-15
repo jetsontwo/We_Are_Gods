@@ -55,6 +55,8 @@ public class AIMovement : MonoBehaviour,Mechanic_Interface
     public void AddGameComponent()
     {
         rb = GetComponentInParent<Rigidbody2D>();
+        Character_Stats cs = transform.parent.GetComponent<Character_Stats>();
+        speed = cs.speed;
     }
 
     public void RemoveGameComponent()

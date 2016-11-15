@@ -38,10 +38,22 @@ public class Component_Transfer : MonoBehaviour {
             else if (object_clicked.CompareTag("Component"))
             {
                 if (object_clicked.transform.parent != gameObject.transform)
+                {
                     Transfer_Component(gameObject, object_clicked.gameObject);
+                }
                 else
                 {
-                    Transfer_Component(object_clicked_storage, object_clicked.gameObject);
+                    Character_Stats cs = object_clicked_storage.GetComponent<Character_Stats>();
+                    for (int i = 0; i < cs.allowed_mechanics.Length; i++)
+                    {
+                        if (object_clicked.name.Equals(cs.allowed_mechanics[i]))
+                        {
+                            Transfer_Component(object_clicked_storage, object_clicked.gameObject);
+                            //
+                            //   SEND A MESSAGE HERE SAYING THEY CANNOT TRANSFER COMPONENT
+                            //
+                        }
+                    }
                 }
             }
             else if (object_clicked.CompareTag("Transfer"))
@@ -83,10 +95,11 @@ public class Component_Transfer : MonoBehaviour {
         {
             float difx = before.position.x - after.position.x;
             float dify = before.position.y - after.position.y;
+            print(difx);
 
             if(Mathf.Abs(difx) >= 0.1 || Mathf.Abs(dify) >= 0.1)
             {
-                mechanic_rb.velocity = new Vector2(difx / 5, dify / 5);
+                mechanic_rb.velocity = new Vector2(-difx *2, -dify *2);
             }
             else
             {
@@ -105,18 +118,18 @@ public class Component_Transfer : MonoBehaviour {
 
         Transform old_parent = componentToTransfer.transform.parent;
         //Sets the parent of the game component to the one specified
-        componentToTransfer.transform.SetParent(objectToTransferTo.transform);
+        componentToTransfer.transform.SetParent(null);
         old_parent.GetComponent<ChildManager>().UpdateChildren();
         //Do movement thing here
-        Move_Component(old_parent, transform, componentToTransfer.GetComponent<Rigidbody2D>());
+        Move_Component(componentToTransfer.transform, objectToTransferTo.transform, componentToTransfer.GetComponent<Rigidbody2D>());
 
         //Updates the children of the object that had the component removed and that of the new parent
 
     }
 
-    void Move_Component(Transform old_parent, Transform new_parent, Rigidbody2D object_to_move_rb)
+    void Move_Component(Transform component, Transform new_parent, Rigidbody2D object_to_move_rb)
     {
-        before = old_parent;
+        before = component;
         after = new_parent;
         mechanic_rb = object_to_move_rb;
         moving_component = true;
@@ -124,6 +137,8 @@ public class Component_Transfer : MonoBehaviour {
 
     void Finish_Transfer()
     {
+
+        component_transfer.transform.SetParent(transfer_location.transform);
         component_transfer.transform.parent.GetComponent<ChildManager>().UpdateChildren();
         component_transfer.GetComponent<SpriteRenderer>().enabled = false;
         component_transfer.GetComponent<BoxCollider2D>().enabled = false;

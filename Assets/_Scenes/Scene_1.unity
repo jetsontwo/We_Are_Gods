@@ -1739,7 +1739,7 @@ MonoBehaviour:
   dialogue_box: {fileID: 841283595}
   text_speed: 0.05
   time_between_text: 3
-  beginning_wait: 1
+  beginning_wait: 3
   text_background: {fileID: 1382906925}
   blip: {fileID: 841283598}
 --- !u!82 &841283598
@@ -3050,6 +3050,7 @@ GameObject:
   - 50: {fileID: 1582002196}
   - 114: {fileID: 1582002195}
   - 61: {fileID: 1582002198}
+  - 114: {fileID: 1582002197}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Transfer
@@ -3258,6 +3259,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1582002197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1582002184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07d50e952b83dff42aed0d0c81e23ec7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.5
+  jump_height: 0
+  particle_scale: 1
+  move_location: {x: 2, y: 0}
+  allowed_mechanics:
+  - Run_Right
 --- !u!61 &1582002198
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3575,6 +3593,7 @@ GameObject:
   - 50: {fileID: 1912635007}
   - 114: {fileID: 1912635006}
   - 95: {fileID: 1912635011}
+  - 114: {fileID: 1912635012}
   m_Layer: 0
   m_Name: TurtleCoon
   m_TagString: Transfer
@@ -3691,6 +3710,23 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &1912635012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1912635005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07d50e952b83dff42aed0d0c81e23ec7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  jump_height: 0
+  particle_scale: 0.5
+  move_location: {x: 2, y: 0}
+  allowed_mechanics:
+  - Run_Right
 --- !u!1 &1938520414
 GameObject:
   m_ObjectHideFlags: 0

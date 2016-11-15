@@ -49,6 +49,8 @@ public class Run_Right : MonoBehaviour, Mechanic_Interface
         {
             rb = transform.parent.GetComponent<Rigidbody2D>();
             ar = transform.parent.GetComponent<Animator>();
+            Character_Stats cs = transform.parent.GetComponent<Character_Stats>();
+            speed = cs.speed;
             player = false;
         }
         else
