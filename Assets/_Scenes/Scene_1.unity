@@ -3889,6 +3889,17 @@ Prefab:
       propertyPath: max_vel
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212000014268246096, guid: 2036295c5a9ca49469e1a8289edad89e,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6d7f314be6a798b4ea99756fc6e4a785,
+        type: 3}
+    - target: {fileID: 212000014268246096, guid: 2036295c5a9ca49469e1a8289edad89e,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2036295c5a9ca49469e1a8289edad89e, type: 2}
   m_IsPrefabParent: 0
@@ -4015,7 +4026,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!4 &2045263882
@@ -4025,7 +4036,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2045263879}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.5, y: 4.1, z: 0}
+  m_LocalPosition: {x: 8.09, y: 4.06, z: 0}
   m_LocalScale: {x: 10, y: 20, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []

@@ -95,7 +95,6 @@ public class Component_Transfer : MonoBehaviour {
         {
             float difx = before.position.x - after.position.x;
             float dify = before.position.y - after.position.y;
-            print(difx);
 
             if(Mathf.Abs(difx) >= 0.1 || Mathf.Abs(dify) >= 0.1)
             {
