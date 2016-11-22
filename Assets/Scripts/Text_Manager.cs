@@ -46,7 +46,7 @@ public class Text_Manager : MonoBehaviour {
                 str += text[i][j];
                 dialogue_box.text = str;
                 blip.Play();
-                blip.pitch = Random.Range(0.6f, 0.65f);
+                blip.pitch = Random.Range(1.1f, 1.15f);
                 yield return new WaitForSeconds(text_speed);
             }
 
