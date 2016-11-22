@@ -12,11 +12,13 @@ public class Text_Manager : MonoBehaviour {
     public AudioSource blip;
     private RawImage background_image;
     public string command;
+    private bool getToEndOfText;
 
 
     // Update is called once per frame
     void Awake()
     {
+        getToEndOfText = false;
         background_image = text_background.GetComponent<RawImage>();
         background_image.enabled = false;
         if (SceneManager.GetActiveScene().buildIndex == 1)
@@ -35,6 +37,12 @@ public class Text_Manager : MonoBehaviour {
             string str = "";
             for (int j = 0; j < text[i].Length; j++)
             {
+                if(getToEndOfText)
+                {
+                    dialogue_box.text = text[i];
+                    getToEndOfText = false;
+                    break;
+                }
                 str += text[i][j];
                 dialogue_box.text = str;
                 blip.Play();
@@ -69,6 +77,12 @@ public class Text_Manager : MonoBehaviour {
         string str = "";
         for (int j = 0; j < text[0].Length; j++)
         {
+            if (getToEndOfText)
+            {
+                dialogue_box.text = text[1];
+                getToEndOfText = false;
+                break;
+            }
             str += text[0][j];
             dialogue_box.text = str;
             blip.Play();
@@ -81,6 +95,12 @@ public class Text_Manager : MonoBehaviour {
         str = "";
         for (int j = 0; j < text[1].Length; j++)
         {
+            if (getToEndOfText)
+            {
+                dialogue_box.text = text[1];
+                getToEndOfText = false;
+                break;
+            }
             str += text[1][j];
             dialogue_box.text = str;
             blip.Play();
@@ -95,6 +115,12 @@ public class Text_Manager : MonoBehaviour {
             str = "";
             for (int j = 0; j < text[4].Length; j++)
             {
+                if (getToEndOfText)
+                {
+                    dialogue_box.text = text[1];
+                    getToEndOfText = false;
+                    break;
+                }
                 str += text[1][j];
                 dialogue_box.text = str;
                 blip.Play();
@@ -104,6 +130,12 @@ public class Text_Manager : MonoBehaviour {
             str = "";
             for (int j = 0; j < text[5].Length; j++)
             {
+                if (getToEndOfText)
+                {
+                    dialogue_box.text = text[1];
+                    getToEndOfText = false;
+                    break;
+                }
                 str += text[1][j];
                 dialogue_box.text = str;
                 blip.Play();
@@ -116,6 +148,12 @@ public class Text_Manager : MonoBehaviour {
             str = "";
             for (int j = 0; j < text[1].Length; j++)
             {
+                if (getToEndOfText)
+                {
+                    dialogue_box.text = text[1];
+                    getToEndOfText = false;
+                    break;
+                }
                 str += text[1][j];
                 dialogue_box.text = str;
                 blip.Play();
@@ -130,6 +168,12 @@ public class Text_Manager : MonoBehaviour {
         str = "";
         for (int j = 0; j < text[1].Length; j++)
         {
+            if (getToEndOfText)
+            {
+                dialogue_box.text = text[1];
+                getToEndOfText = false;
+                break;
+            }
             str += text[1][j];
             dialogue_box.text = str;
             blip.Play();
@@ -142,5 +186,15 @@ public class Text_Manager : MonoBehaviour {
         background_image.enabled = false;
 
         //play 4 and 5 together for turtle
+    }
+
+
+    void Update()
+    {
+        getToEndOfText = false;
+        if(Input.GetKeyDown(KeyCode.Return))
+        {
+            getToEndOfText = true;
+        }
     }
 }
