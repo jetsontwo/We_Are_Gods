@@ -79,7 +79,11 @@ public class Component_Transfer : MonoBehaviour {
                 else
                 {
                     if (game_object_cm)
+                    {
+                        Change_Emission(10);
+                        ps = null;
                         game_object_cm.no_show_children();
+                    }
                     object_clicked_storage = object_clicked.gameObject;
                     game_object_cm = object_clicked_storage.GetComponent<ChildManager>();
                     ps = object_clicked.GetComponentInChildren<ParticleSystem>();
@@ -99,7 +103,11 @@ public class Component_Transfer : MonoBehaviour {
                     cm.no_show_children();
                 else
                     cm.show_children();
-
+                if (ps)
+                {
+                    Change_Emission(10);
+                    ps = null;
+                }
                 object_clicked_storage = null;
                 game_object_cm = null;
             }
