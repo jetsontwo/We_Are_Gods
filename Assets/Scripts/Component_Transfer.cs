@@ -9,7 +9,7 @@ public class Component_Transfer : MonoBehaviour {
     private Rigidbody2D mechanic_rb;
     private bool moving_component = false;
     private ParticleSystem ps;
-    public Text_Manager tm;
+    //public Text_Manager tm;
 	// Update is called once per frame
 
     void Start()
@@ -17,7 +17,7 @@ public class Component_Transfer : MonoBehaviour {
         cm = GetComponent<ChildManager>();
     }
 	void Update () {
-        tm.transferred_component = null;
+        //tm.transferred_component = null;
         if (Input.GetMouseButtonDown(0) && !moving_component)
         {
             //Scans for a collider when the player clicks at the current mouse position
@@ -53,7 +53,7 @@ public class Component_Transfer : MonoBehaviour {
                     {
                         if (object_clicked.name.Equals(cs.allowed_mechanics[i]))
                         {
-                            tm.transferred_component = object_clicked.gameObject;
+                            //tm.transferred_component = object_clicked.gameObject;
 
                             Transfer_Component(object_clicked_storage, object_clicked.gameObject);
                             //
@@ -120,7 +120,7 @@ public class Component_Transfer : MonoBehaviour {
                 Finish_Transfer();
             }
         }
-        tm.cur_touched_object = object_clicked_storage;
+        //tm.cur_touched_object = object_clicked_storage;
     }
 
 
