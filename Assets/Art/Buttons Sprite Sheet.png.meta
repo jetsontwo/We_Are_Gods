@@ -1,13 +1,13 @@
 fileFormatVersion: 2
 guid: 29cdf2c41ebca6e42b87a7f44232dfcc
-timeCreated: 1479789888
+timeCreated: 1479790363
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Buttons Sprite Sheet_0
-    21300002: Buttons Sprite Sheet_1
-    21300004: Buttons Sprite Sheet_2
-    21300006: Buttons Sprite Sheet_3
+    21300000: Exit Button_0
+    21300002: Exit Button_1
+    21300004: Play Button_0
+    21300006: Play Button_1
     21300008: Buttons Sprite Sheet_4
   serializedVersion: 2
   mipmaps:
@@ -58,7 +58,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Buttons Sprite Sheet_0
+      name: Exit Button_0
       rect:
         serializedVersion: 2
         x: 0
@@ -66,12 +66,12 @@ TextureImporter:
         width: 300
         height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Buttons Sprite Sheet_1
+      name: Exit Button_1
       rect:
         serializedVersion: 2
         x: 0
@@ -79,12 +79,12 @@ TextureImporter:
         width: 300
         height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Buttons Sprite Sheet_2
+      name: Play Button_0
       rect:
         serializedVersion: 2
         x: 0
@@ -92,12 +92,12 @@ TextureImporter:
         width: 300
         height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Buttons Sprite Sheet_3
+      name: Play Button_1
       rect:
         serializedVersion: 2
         x: 0
@@ -105,7 +105,7 @@ TextureImporter:
         width: 300
         height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -118,7 +118,7 @@ TextureImporter:
         width: 300
         height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
