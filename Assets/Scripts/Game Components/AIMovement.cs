@@ -1,45 +1,60 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class AIMovement : MonoBehaviour,Mechanic_Interface
+public class AIMovement : MonoBehaviour, Mechanic_Interface
 {
-    public float speed;
+    //Doesn't like slopes
+
+    float speed;
     public float maxSpeed;
 
+    float forwardEdge;
     Rigidbody2D rb;
     RaycastHit2D hit;
+
+    public bool testEdge;
+    public GameObject edgeIndicator;
 
     void Awake ()
     {
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<Collider2D>().enabled = false;
 
+        if (testEdge)
+        {
+            edgeIndicator = (GameObject)Instantiate(Resources.Load("Simple Dot"));
+        }
+
         AddGameComponent();
     }
 
     void Update()
     {
-        hit = Physics2D.Raycast(rb.transform.position, rb.transform.right, (rb.GetComponent<Collider2D>().bounds.extents.x + 0.01f));
+        if (testEdge)
+        {
+            Ray direction = new Ray(rb.transform.position, rb.transform.right);
+            edgeIndicator.transform.position = direction.GetPoint(forwardEdge * 1.1f);
+        }
+        hit = Physics2D.Raycast(rb.transform.position, rb.transform.right, forwardEdge * 1.1f);
         if (hit)
         {
             //Debug.Log(transform.parent.name + " hit a thing.");
             rb.transform.Rotate(0, 180, 0);
         }
 
-        if (rb.transform.eulerAngles.y < 181 && rb.transform.eulerAngles.y > 179)
+        if (rb.transform.eulerAngles.y < 181 && rb.transform.eulerAngles.y > 179)   //Facing left
         {
             rb.transform.eulerAngles = new Vector3(rb.transform.eulerAngles.x, 180, rb.transform.eulerAngles.z);
 
-            if (rb.velocity.x < maxSpeed)  //If moving right and not at max (positive/right) velocity
+            if (rb.velocity.x > -maxSpeed)  //If moving left and not at max (negative/left)  velocity
             {
                 rb.AddForce(new Vector2(-speed, 0), ForceMode2D.Impulse);
             }
         }
-        else if(rb.transform.eulerAngles.y < 1 && rb.transform.eulerAngles.y > -1)
+        else if(rb.transform.eulerAngles.y < 1 && rb.transform.eulerAngles.y > -1)  //Facing right
         {
             rb.transform.eulerAngles = new Vector3(rb.transform.eulerAngles.x, 0, rb.transform.eulerAngles.z);
 
-            if (rb.velocity.x > -maxSpeed )    //If moving left and not at max (negative/left) velocity
+            if (rb.velocity.x < maxSpeed)    //If moving right and not at max (positive/right) velocity
             {
                 rb.AddForce(new Vector2(speed, 0), ForceMode2D.Impulse);
             }
@@ -54,7 +69,9 @@ public class AIMovement : MonoBehaviour,Mechanic_Interface
 
     public void AddGameComponent()
     {
-        rb = GetComponentInParent<Rigidbody2D>();
+        rb = transform.parent.GetComponent<Rigidbody2D>();
+        forwardEdge = rb.GetComponent<Collider2D>().bounds.extents.x + (rb.GetComponent<Collider2D>().offset.x * rb.transform.localScale.x);
+
         Character_Stats cs = transform.parent.GetComponent<Character_Stats>();
         speed = cs.speed;
     }

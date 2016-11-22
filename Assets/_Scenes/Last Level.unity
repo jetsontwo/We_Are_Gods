@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.04
   minMaxY: {x: -8, y: 8}
-  standTime: 8
+  standTime: 1
   shakeIntensity: 0.3
 --- !u!212 &9400518
 SpriteRenderer:
@@ -266,7 +266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.04
   minMaxY: {x: -8, y: 8}
-  standTime: 8
+  standTime: 1
   shakeIntensity: 0.3
 --- !u!212 &337618169
 SpriteRenderer:
@@ -378,7 +378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.04
   minMaxY: {x: -8, y: 8}
-  standTime: 8
+  standTime: 1
   shakeIntensity: 0.3
 --- !u!212 &385202003
 SpriteRenderer:
@@ -500,7 +500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.04
   minMaxY: {x: -8, y: 8}
-  standTime: 8
+  standTime: 1
   shakeIntensity: 0.3
 --- !u!212 &705459848
 SpriteRenderer:
@@ -736,7 +736,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.04
   minMaxY: {x: -8, y: 8}
-  standTime: 8
+  standTime: 1
   shakeIntensity: 0.3
 --- !u!212 &899273853
 SpriteRenderer:
@@ -848,7 +848,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.04
   minMaxY: {x: -8, y: 8}
-  standTime: 8
+  standTime: 1
   shakeIntensity: 0.3
 --- !u!212 &899859699
 SpriteRenderer:
@@ -1114,7 +1114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.04
   minMaxY: {x: -8, y: 8}
-  standTime: 8
+  standTime: 1
   shakeIntensity: 0.3
 --- !u!212 &993629762
 SpriteRenderer:
@@ -1514,7 +1514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.04
   minMaxY: {x: -8, y: 8}
-  standTime: 8
+  standTime: 1
   shakeIntensity: 0.3
 --- !u!212 &1289494309
 SpriteRenderer:
@@ -1626,7 +1626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.04
   minMaxY: {x: -8, y: 8}
-  standTime: 8
+  standTime: 1
   shakeIntensity: 0.3
 --- !u!212 &1324065802
 SpriteRenderer:
@@ -1706,7 +1706,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.04
   minMaxY: {x: -8, y: 8}
-  standTime: 8
+  standTime: 1
   shakeIntensity: 0.3
 --- !u!212 &1357142223
 SpriteRenderer:
@@ -1850,7 +1850,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.04
   minMaxY: {x: -8, y: 8}
-  standTime: 8
+  standTime: 1
   shakeIntensity: 0.3
 --- !u!212 &1373520451
 SpriteRenderer:
@@ -1962,7 +1962,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.04
   minMaxY: {x: -8, y: 8}
-  standTime: 8
+  standTime: 1
   shakeIntensity: 0.3
 --- !u!212 &1398266721
 SpriteRenderer:
@@ -2180,7 +2180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.04
   minMaxY: {x: -8, y: 8}
-  standTime: 8
+  standTime: 1
   shakeIntensity: 0.3
 --- !u!212 &1600617611
 SpriteRenderer:
@@ -2292,7 +2292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.04
   minMaxY: {x: -8, y: 8}
-  standTime: 8
+  standTime: 1
   shakeIntensity: 0.3
 --- !u!212 &1602509639
 SpriteRenderer:
@@ -2404,7 +2404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.04
   minMaxY: {x: -8, y: 8}
-  standTime: 8
+  standTime: 1
   shakeIntensity: 0.3
 --- !u!212 &1667258418
 SpriteRenderer:
@@ -2516,7 +2516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.04
   minMaxY: {x: -8, y: 8}
-  standTime: 8
+  standTime: 1
   shakeIntensity: 0.3
 --- !u!212 &2020985901
 SpriteRenderer:

@@ -12,6 +12,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Scene_1.unity
   - enabled: 1
+    path: Assets/_Scenes/Level 2.unity
+  - enabled: 1
     path: Assets/_Scenes/Last Level.unity
   - enabled: 1
     path: Assets/_Scenes/Very Last Level.unity

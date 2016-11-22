@@ -1,9 +1,14 @@
 fileFormatVersion: 2
 guid: ffe9c716a5144e64f8c4af84054fdc4f
-timeCreated: 1477721463
+timeCreated: 1479792299
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: TurtleCoon2.0_0
+    21300002: TurtleCoon2.0_1
+    21300004: TurtleCoon2.0_2
+    21300006: TurtleCoon2.0_3
+    21300008: TurtleCoon2.0_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -51,7 +56,72 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: TurtleCoon2.0_0
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 0
+        width: 200
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TurtleCoon2.0_1
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 0
+        width: 200
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TurtleCoon2.0_2
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 0
+        width: 200
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TurtleCoon2.0_3
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 0
+        width: 200
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TurtleCoon2.0_4
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 0
+        width: 200
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 

@@ -4,12 +4,14 @@ using System.Collections;
 public class PlayerJump : MonoBehaviour, Mechanic_Interface
 {
     public float jumpSpeed;
-    bool jumping = false;
-    private Animator am;
     public bool always_jump;
     public LayerMask includedLayers;
 
-    Rigidbody2D rb;
+    bool jumping = false;
+    float lowerEdge;
+
+    private Rigidbody2D rb;
+    private Animator am;
 
     void Start()
     {
@@ -35,15 +37,13 @@ public class PlayerJump : MonoBehaviour, Mechanic_Interface
         if (jumping)
         {
             RaycastHit2D hit;
-            hit = Physics2D.Raycast(rb.transform.position, -rb.transform.up,
-                ((rb.GetComponent<Collider2D>().bounds.extents.y - (rb.GetComponent<Collider2D>().offset.y * rb.transform.localScale.y)) * 1.1f),
-                includedLayers);
+            hit = Physics2D.Raycast(rb.transform.position, -rb.transform.up, lowerEdge * 1.1f, includedLayers);
 
             if (hit)
             {
                 if (!hit.collider.isTrigger)  //This nested 'if', rather than an &&, avoids error messages if hit is null
                 {
-                    if(rb.velocity.y == 0)
+                    if(rb.velocity.y > -1 && rb.velocity.y < 1) //near 0 because it isn't always exact
                     {
                         rb.AddRelativeForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
                     }
@@ -58,6 +58,7 @@ public class PlayerJump : MonoBehaviour, Mechanic_Interface
         rb = transform.parent.GetComponent<Rigidbody2D>();
         if(transform.parent.CompareTag("Player"))
             am = transform.parent.GetComponent<Animator>();
+        lowerEdge = rb.GetComponent<Collider2D>().bounds.extents.y - (rb.GetComponent<Collider2D>().offset.y * rb.transform.localScale.y);
     }
 
     public void RemoveGameComponent()

@@ -1304,8 +1304,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1094295757}
-        m_MethodName: SetActive
+      - m_Target: {fileID: 2046577954}
+        m_MethodName: set_interactable
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
