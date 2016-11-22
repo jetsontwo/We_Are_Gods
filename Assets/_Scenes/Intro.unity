@@ -261,10 +261,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4628b4b1f04f2ab41ba875d7c05813c2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e2df89cda8133d24e9e337674e459faa, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.37
+  m_Pitch: 1.56
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -452,11 +452,13 @@ MonoBehaviour:
   - I guess I need to load up the  assets for the game, huh? This old  lemon of a
     game couldn't be more  useless. Give me a second.
   dialogue_box: {fileID: 1057530677}
-  text_speed: 0.05
+  text_speed: 0.03
   time_between_text: 3
   beginning_wait: 5
   text_background: {fileID: 770914830}
   exit_level: {fileID: 1000014098788058, guid: 86b7eee52b77593418c59031b7d8cf15, type: 2}
+  cur_touched_object: {fileID: 0}
+  transferred_component: {fileID: 0}
   blip: {fileID: 601741966}
   command: first_level
 --- !u!114 &1057530677
