@@ -3717,27 +3717,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114000010239090778, guid: 2036295c5a9ca49469e1a8289edad89e,
-        type: 2}
-      propertyPath: speed
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010239090778, guid: 2036295c5a9ca49469e1a8289edad89e,
-        type: 2}
-      propertyPath: max_vel
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212000014268246096, guid: 2036295c5a9ca49469e1a8289edad89e,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 6d7f314be6a798b4ea99756fc6e4a785,
-        type: 3}
-    - target: {fileID: 212000014268246096, guid: 2036295c5a9ca49469e1a8289edad89e,
-        type: 2}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2036295c5a9ca49469e1a8289edad89e, type: 2}
   m_IsPrefabParent: 0
