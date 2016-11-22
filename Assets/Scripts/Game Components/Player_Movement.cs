@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Player_Movement : MonoBehaviour, Mechanic_Interface
 {
-    public float speed, max_vel;
+    public float speed, max_vel, decelerate_speed;
 
     private float horiz_move;
     private Rigidbody2D rb;
@@ -50,7 +50,7 @@ public class Player_Movement : MonoBehaviour, Mechanic_Interface
         }
         else
         {
-            rb.velocity -= new Vector2(rb.velocity.x, 0) * Time.deltaTime * 5;
+            rb.velocity -= new Vector2(rb.velocity.x, 0) * Time.deltaTime * decelerate_speed;
             ar.SetBool("walk_left", false);
             ar.SetBool("walk_right", false);
         }
