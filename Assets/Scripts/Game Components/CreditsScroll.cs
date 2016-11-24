@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class CreditsScroll : MonoBehaviour
 {
@@ -79,7 +78,7 @@ public class CreditsScroll : MonoBehaviour
         transform.GetComponent<Collider2D>().enabled = false;
 
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
-        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, sprite.color.a / 2);
+        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0.4f);
 
         standingOn = false;
         Vector3 shakeRightSide = new Vector3(maxX, transform.position.y, transform.position.z);
