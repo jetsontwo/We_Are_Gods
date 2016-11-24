@@ -23,7 +23,7 @@ GameObject:
   - 212: {fileID: 212000014268246096}
   - 61: {fileID: 61000012797218820}
   - 50: {fileID: 50000014168563346}
-  - 114: {fileID: 114000012042417228}
+  - 114: {fileID: 114000014166119646}
   m_Layer: 4
   m_Name: Run Right
   m_TagString: Component
@@ -88,7 +88,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.5
   max_vel: 1
---- !u!114 &114000012042417228
+--- !u!114 &114000014166119646
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

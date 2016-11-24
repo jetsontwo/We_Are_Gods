@@ -779,7 +779,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &444089054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1816,18 +1816,18 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 2bdf313558a855542b6501ce15a25770, type: 3}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 20
     m_FontStyle: 1
-    m_BestFit: 0
-    m_MinSize: 1
-    m_MaxSize: 40
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 20
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 2
+    m_LineSpacing: 1
   m_Text: 
 --- !u!222 &841283596
 CanvasRenderer:
@@ -1847,31 +1847,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue_array:
-  - Well, here it is. This is the first  level of the game. Intended for  imbeciles
-    like you. I personally  think even this is too hard for  you, but I don't have
-    a say, do I?
-  - Really? This easy level is too  difficult for you? Ugh. Alright  then. I'll go
-    into the libraries  upon libraries of code to find  hints for you so that this
-    stupidly  easy level is even more simple than  it already is in order for you
-    to  allow your puny primate brain to  even be able to begin to comprehend  how
-    to solve it.
-  - There you go. Super easy. Just click on something sparkling to bring up circle
-    menus. Pretty  self explanatory. I made the labels  nice and large so that you
-    can see  the obvious tags which you need to  click on to move them. I don't  think
-    I need to explain more.
-  - Hey blob. Wrong one. How are you  gonna move that humongous tree if  it can't
-    move horizontally, huh?  Think about it. Yeah, I didn't  think so.
-  - Who was the concept artist who  originally thought of the raccoon- tortoise? I
-    want to punish the guy  who made it. Come on. Could they  not think of any other
-    animal that  could fit this function? Ugh, no  originality whatsoever.
-  - They're not even trying. They're  just ripping off Mario. That IP has  been dead
-    for years.
-  - Good job. You deserve a gold star.  A+. Trophy of great effort and  great participation.
-    You tried.  Took you long enough. Let's move on  to the next level.
+  - character: 0
+    dialogueText: Hello! My name is Hrodebert. My, it  is such a beautiful day in
+      this  neighborhood! I am your dutiful and  friendly and neighborly artificial  intelligence,
+      or AI for short,  guide! Please do ask questions if  you have any problems regarding  this
+      level, either about the basic mechanics and/or controls for the game. Don't
+      hesitate, I won't bite!
+  - character: 1
+    dialogueText: What the...? Who the hell are you?  Where the hell did I dig you
+      up  from? I don't remember you being in  the code for the game...
   dialogue_box: {fileID: 841283595}
   text_speed: 0.05
   time_between_text: 3
   beginning_wait: 3
+  miltiadesFont: {fileID: 12800000, guid: f3ac088e2ad1aa0468fc1f76242d8574, type: 3}
+  hrodebertFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   text_background: {fileID: 1382906925}
   exit_level: {fileID: 1000014098788058, guid: 86b7eee52b77593418c59031b7d8cf15, type: 2}
   cur_touched_object: {fileID: 0}
@@ -1940,7 +1930,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -3257,7 +3247,7 @@ MonoBehaviour:
   particle_scale: 1
   move_location: {x: 2, y: 0}
   allowed_mechanics:
-  - Run_Right
+  - Run Right
 --- !u!61 &1582002198
 BoxCollider2D:
   m_ObjectHideFlags: 0
