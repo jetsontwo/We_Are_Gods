@@ -20,7 +20,7 @@ public class FloatingPlatform : MonoBehaviour
 
         if (startPosition == Positions.Left)
         {
-            rightLimit = transform.position + new Vector3(distance * 2, 0, 0);
+            rightLimit = transform.position + new Vector3(distance/* * 2*/, 0, 0);
             leftLimit = transform.position;
 
             lerper = 0f;
@@ -35,7 +35,7 @@ public class FloatingPlatform : MonoBehaviour
         else if (startPosition == Positions.Right)
         {
             rightLimit = transform.position;
-            leftLimit = transform.position + new Vector3(distance * -2, 0, 0);
+            leftLimit = transform.position + new Vector3(-distance/* * 2*/, 0, 0);
 
             lerper = 1f;
         }

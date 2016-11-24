@@ -75,4 +75,9 @@ public class Player_Movement : MonoBehaviour, Mechanic_Interface
         //Resets the velocity of the object to zero when the game component is removed
         rb.velocity = Vector2.zero;
     }
+
+    void OnDisable()
+    {
+        RemoveGameComponent();
+    }
 }
