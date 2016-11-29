@@ -216,6 +216,7 @@ public class DialogueSegment
     public enum CharacterList { HRODEBERT, MILTIADES }
     public CharacterList character;
 
-    //public bool requireAction;    //Maybe add later
+    [TextArea(3,10)]
     public string dialogueText;
+    //public bool requireAction;    //Maybe add later
 }
