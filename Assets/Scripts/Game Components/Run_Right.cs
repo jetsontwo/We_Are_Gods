@@ -18,7 +18,7 @@ public class Run_Right : MonoBehaviour, Mechanic_Interface
 
     // Update is called once per frame
     void Update () {
-        if (!player)
+        if (!player && transform.parent != null)
         {
             if (rb.velocity.x < max_vel && rb.transform.position.x < 2)
             {
@@ -69,6 +69,8 @@ public class Run_Right : MonoBehaviour, Mechanic_Interface
             rb.velocity = Vector2.zero;
             ar.SetBool("walking", false);
         }
+        rb = null;
+        ar = null;
         player = false;
     }
 }
