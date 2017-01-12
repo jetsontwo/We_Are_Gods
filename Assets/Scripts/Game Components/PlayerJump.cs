@@ -8,11 +8,11 @@ public class PlayerJump : MonoBehaviour, Mechanic_Interface
     public LayerMask includedLayers;
 
     bool jumping = false;
-    bool onPlatform = false;
+    //bool onPlatform = false;
     float lowerEdge;
 
     private Rigidbody2D rb;
-    private Joint2D joint;
+    //private Joint2D joint;
     private Animator am;
 
     void Start()
@@ -47,21 +47,21 @@ public class PlayerJump : MonoBehaviour, Mechanic_Interface
                 {
                     if (!hit.collider.isTrigger)  //This nested 'if', rather than an &&, avoids error messages if hit is null
                     {
-                        if (onPlatform && transform.parent.parent != null)
+                        /*if (onPlatform && transform.parent.parent != null)
                         {
                             Debug.Log("Remove plat");
                             onPlatform = false;
-                            joint.enabled = false;
-                            joint.connectedBody = null;
-                            //transform.parent.SetParent(null);
-                        }
+                            //joint.enabled = false;
+                            //joint.connectedBody = null;
+                            transform.parent.SetParent(null);
+                        }*/
                         
                         rb.AddRelativeForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
                     }
                 }
             }
             jumping = false;
-        }
+        }/*
         else if (!onPlatform && transform.parent.parent == null)
         {
             RaycastHit2D hit;
@@ -72,9 +72,9 @@ public class PlayerJump : MonoBehaviour, Mechanic_Interface
                 if (!hit.collider.isTrigger && !hit.collider.CompareTag("Ground"))  //This nested 'if', rather than an &&, avoids error messages if hit is null
                 {
                     onPlatform = true;
-                    joint.enabled = true;
-                    joint.connectedBody = hit.rigidbody;
-                    //transform.parent.SetParent(hit.transform);
+                    //joint.enabled = true;
+                    //joint.connectedBody = hit.rigidbody;
+                    transform.parent.SetParent(hit.transform);
                 }
             }
         }/*
@@ -98,7 +98,7 @@ public class PlayerJump : MonoBehaviour, Mechanic_Interface
     public void AddGameComponent()
     {
         rb = transform.parent.GetComponent<Rigidbody2D>();
-        joint = transform.parent.GetComponent<Joint2D>();
+        //joint = transform.parent.GetComponent<Joint2D>();
         if (transform.parent.CompareTag("Player"))
             am = transform.parent.GetComponent<Animator>();
         lowerEdge = rb.GetComponent<Collider2D>().bounds.extents.y - (rb.GetComponent<Collider2D>().offset.y * rb.transform.localScale.y);

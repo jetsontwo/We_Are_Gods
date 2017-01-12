@@ -14,6 +14,8 @@ public class AIMovement : MonoBehaviour, Mechanic_Interface
     public bool testEdge;
     public GameObject edgeIndicator;
 
+    Rigidbody2D playerRb;
+
     void Awake ()
     {
         GetComponent<SpriteRenderer>().enabled = false;
@@ -34,6 +36,7 @@ public class AIMovement : MonoBehaviour, Mechanic_Interface
             Ray direction = new Ray(rb.transform.position, rb.transform.right);
             edgeIndicator.transform.position = direction.GetPoint(forwardEdge * 1.1f);
         }
+
         hit = Physics2D.Raycast(rb.transform.position, rb.transform.right, forwardEdge * 1.1f);
         if (hit)
         {
@@ -44,19 +47,29 @@ public class AIMovement : MonoBehaviour, Mechanic_Interface
         if (rb.transform.eulerAngles.y < 181 && rb.transform.eulerAngles.y > 179)   //Facing left
         {
             rb.transform.eulerAngles = new Vector3(rb.transform.eulerAngles.x, 180, rb.transform.eulerAngles.z);
+            if (playerRb != null)
+            {
+                playerRb.transform.eulerAngles = new Vector3(playerRb.transform.eulerAngles.x, 0, playerRb.transform.eulerAngles.z);
+            }
 
             if (rb.velocity.x > -maxSpeed)  //If moving left and not at max (negative/left)  velocity
             {
-                rb.AddForce(new Vector2(-speed, 0), ForceMode2D.Impulse);
+                Debug.Log("Added force to thing");
+                rb.AddForce(new Vector2(-speed / rb.mass, 0), ForceMode2D.Impulse);
             }
         }
         else if(rb.transform.eulerAngles.y < 1 && rb.transform.eulerAngles.y > -1)  //Facing right
         {
             rb.transform.eulerAngles = new Vector3(rb.transform.eulerAngles.x, 0, rb.transform.eulerAngles.z);
+            if (playerRb != null)
+            {
+                playerRb.transform.eulerAngles = new Vector3(playerRb.transform.eulerAngles.x, 0, playerRb.transform.eulerAngles.z);
+            }
 
             if (rb.velocity.x < maxSpeed)    //If moving right and not at max (positive/right) velocity
             {
-                rb.AddForce(new Vector2(speed, 0), ForceMode2D.Impulse);
+                Debug.Log("Added force to thing");
+                rb.AddForce(new Vector2(speed / rb.mass, 0), ForceMode2D.Impulse);
             }
         }
         else
@@ -65,6 +78,36 @@ public class AIMovement : MonoBehaviour, Mechanic_Interface
         }
         //Velocity checks are different otherwise weird behavior when switching directions at max velocity
         //Also, angle is set everytime because transform.Rotate can get weird numbers, like 1.035947e^-5, as angels sometimes
+
+
+        if (playerRb != null)
+        {
+            Debug.Log("Added " + (2 * speed * playerRb.mass) + " impulse to player");
+
+            if (rb.transform.eulerAngles.y < 181 && rb.transform.eulerAngles.y > 179)   //Facing left
+            {
+                playerRb.AddForce(new Vector2(-4 * speed * playerRb.mass, 0), ForceMode2D.Impulse);
+            }
+            else if (rb.transform.eulerAngles.y < 1 && rb.transform.eulerAngles.y > -1)   //Facing right
+            {
+                playerRb.AddForce(new Vector2(4 * speed * playerRb.mass, 0), ForceMode2D.Impulse);
+            }
+        }
+    }
+    private void OnParentCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Player")
+        {
+            playerRb = collision.collider.GetComponent<Rigidbody2D>();
+        }
+    }
+
+    private void OnParentCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Player")
+        {
+            playerRb = null;
+        }
     }
 
     public void AddGameComponent()
